@@ -30,9 +30,9 @@ Transform:
   m_GameObject: {fileID: 328644472070244887}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8927707397219509900}
   m_Father: {fileID: 0}
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: XRI Head
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &5675937731870255715
@@ -131,6 +131,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveInput: {fileID: -3603844561257126198, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
+  shootInput: {fileID: 2494954584338170553, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  shoot: 0
   move: {x: 0, y: 0}
 --- !u!114 &6469720791641618742
 MonoBehaviour:
@@ -146,11 +149,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 5675937731870255715}
   speed: 6
-  controller: {fileID: 0}
+  controller: {fileID: 4656060905192866219}
   RotationSmoothTime: 0.12
   characterAnim: {fileID: 8833460639376175028}
   RotationSpeed: 240
-  model: {fileID: 0}
+  model: {fileID: 8929580958862342832}
   rotationThreshold: 0
 --- !u!1 &8928878851713396548
 GameObject:
@@ -644,7 +647,7 @@ Transform:
   m_GameObject: {fileID: 8929763885971969628}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.33594707, y: 0.33594707, z: 0.33594707}
   m_ConstrainProportionsScale: 0
   m_Children:

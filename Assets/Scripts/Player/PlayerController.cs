@@ -1,59 +1,60 @@
 
 using UnityEngine;
 
-    public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
+{
+    [SerializeField] private PlayerInputHandling input;
+
+    private GameObject _mainCamera;
+    [SerializeField] private float speed = 6.0f;
+
+    private Vector3 moveDirection = Vector3.zero;
+    [SerializeField] private CharacterController controller;
+
+    public float RotationSmoothTime = 0.12f;
+
+    [SerializeField] private CharacterAnimations characterAnim;
+
+    public float RotationSpeed = 240f;
+    private Quaternion targetRotation;
+    [SerializeField] private GameObject model;
+
+    [SerializeField] private float rotationThreshold;
+
+    private float boostAmount = 1;
+
+    private void Start()
     {
-        [SerializeField] private PlayerInputHandling input;
+      controller = GetComponent<CharacterController>();
+      _mainCamera = Camera.main.gameObject;
 
-        private GameObject _mainCamera;
-        [SerializeField] private float speed = 6.0f;
+      targetRotation = transform.rotation;
 
-        private Vector3 moveDirection = Vector3.zero;
-        [SerializeField] private CharacterController controller;
+      model = transform.GetChild(0).gameObject;
+    }
 
-        public float RotationSmoothTime = 0.12f;
+    private void Update()
+    {
+      if(GameManager.Instance != null)
+      {
+         if (!GameManager.Instance.IsGameRunning())
+          return;
 
-        [SerializeField] private CharacterAnimations characterAnim;
+              
+      }
 
-        public float RotationSpeed = 240f;
-        private Quaternion targetRotation;
-        [SerializeField] private GameObject model;
+        Move();
 
-        [SerializeField] private float rotationThreshold;
+    }
 
-        private float boostAmount = 1;
-
-        private void Start()
-        {
-            controller = GetComponent<CharacterController>();
-            _mainCamera = Camera.main.gameObject;
-
-            targetRotation = transform.rotation;
-
-            model = transform.GetChild(0).gameObject;
-        }
-
-        private void Update()
-        {
-            if(GameManager.Instance != null)
-            {
-                if (!GameManager.Instance.IsGameRunning())
-                    return;
-
-                Move();
-            }
-            
-        }
-
-        private void LateUpdate()
-        {
-            Rotation();
-        }
+    private void LateUpdate()
+    {
+       Rotation();
+    }
 
         private void Move()
         {
-            // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = speed * boostAmount;
+            float targetSpeed = speed;
 
 
             float moveHorizontal = input.move.x;
@@ -116,12 +117,6 @@ using UnityEngine;
 
             Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
              model.transform.rotation = targetRotation;
-        }
-
-        public void AddBoost(float amount)
-        {
-            if (amount > boostAmount)
-                boostAmount = amount;
         }
     }
 

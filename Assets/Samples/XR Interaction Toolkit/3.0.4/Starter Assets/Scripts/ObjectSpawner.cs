@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit.Utilities;
 
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
@@ -9,6 +10,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
     /// </summary>
     public class ObjectSpawner : MonoBehaviour
     {
+        public bool HasSpawned = false;
+
+        public UnityEvent OnPlayerObjectSpawned;
+
         [SerializeField]
         [Tooltip("The camera that objects will face when spawned. If not set, defaults to the main camera.")]
         Camera m_CameraToFace;
@@ -192,6 +197,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         /// <seealso cref="objectSpawned"/>
         public bool TrySpawnObject(Vector3 spawnPoint, Vector3 spawnNormal)
         {
+            if (HasSpawned) return false;
+
             if (m_OnlySpawnInView)
             {
                 var inViewMin = m_ViewportPeriphery;
@@ -229,6 +236,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                 visualizationTrans.position = spawnPoint;
                 visualizationTrans.rotation = newObject.transform.rotation;
             }
+
+            HasSpawned = true;
+            OnPlayerObjectSpawned?.Invoke();
 
             objectSpawned?.Invoke(newObject);
             return true;

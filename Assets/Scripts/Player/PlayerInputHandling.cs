@@ -1,15 +1,20 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-    public class PlayerInputHandling : MonoBehaviour
-    {
-        [SerializeField] private InputActionReference moveInput;
+public class PlayerInputHandling : MonoBehaviour
+{
+  [SerializeField] private InputActionReference moveInput;
 
-        public Vector2 move;
+  [SerializeField] private InputActionReference shootInput;
 
-        private void Update()
-        {
-            move = moveInput.action.ReadValue<Vector2>();
-        }
-    }
+  public bool shoot;
+  public Vector2 move;
 
+     private void Update()
+     {
+         move = moveInput.action.ReadValue<Vector2>();
+
+         shoot = shootInput.action.ReadValue<bool>();
+     }
+
+}
