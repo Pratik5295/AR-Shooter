@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 3750142736637474433}
   - component: {fileID: 1343092695799284377}
   - component: {fileID: 3789800998600590913}
+  - component: {fileID: 97546258621690460}
   - component: {fileID: 6760498489762283943}
   - component: {fileID: 4515954197423361456}
   - component: {fileID: 3650679564326317043}
@@ -194,6 +195,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 747486230364259663}
+  - {fileID: 4813466629179216456}
   - {fileID: 2268264989052952992}
   - {fileID: 75416753393207327}
   m_Father: {fileID: 174394969703770225}
@@ -289,6 +291,21 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+--- !u!114 &97546258621690460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539491608501766705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90ff3127b00f13428230667fafa840c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1531266638244021502, guid: 1b5a4ed0362c731408a32210bebdc80e,
+    type: 3}
+  bulletSpawnPoint: {fileID: 4813466629179216456}
 --- !u!114 &6760498489762283943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2143,6 +2160,37 @@ Transform:
   m_Children:
   - {fileID: 122197898705363441}
   m_Father: {fileID: 778845661990540146}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7343658862011803950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4813466629179216456}
+  m_Layer: 0
+  m_Name: Shoot-Spawn
+  m_TagString: CinemachineTarget
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4813466629179216456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7343658862011803950}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.375, z: 0.431}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3036074890082104915}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7575334226054373168
 GameObject:
