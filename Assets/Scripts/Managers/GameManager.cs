@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
     public enum GameState
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject PlayerObject;
+
+    public TextMeshProUGUI moveText;
 
     public Action<GameState> OnStateChanged;
 

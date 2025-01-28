@@ -286,9 +286,7 @@ MonoBehaviour:
         m_CallState: 2
   m_CameraToFace: {fileID: 0}
   m_ObjectPrefabs:
-  - {fileID: 328644472070244887, guid: af4df3ef69bb70a45b6bca1a2126e289, type: 3}
-  - {fileID: 2536179168773468182, guid: 542bebf5b8753414c88032a5245f2f30, type: 3}
-  - {fileID: 6318321749252431117, guid: 9fa6d53907aa19a439541b7d71c108b1, type: 3}
+  - {fileID: 3893176289557020924, guid: ee9e98ba45c41ae468005849909160c0, type: 3}
   m_SpawnVisualizationPrefab: {fileID: 0}
   m_SpawnOptionIndex: 0
   m_OnlySpawnInView: 1
@@ -607,7 +605,7 @@ PrefabInstance:
     - target: {fileID: 8481315677913185903, guid: af4df3ef69bb70a45b6bca1a2126e289,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: 6fb00339-a75a-4e5b-94e0-839f979f2a8a
+      value: XRI Head
       objectReference: {fileID: 0}
     - target: {fileID: 8927770561176636500, guid: af4df3ef69bb70a45b6bca1a2126e289,
         type: 3}
@@ -770,7 +768,7 @@ GameObject:
   - component: {fileID: 1353768848}
   - component: {fileID: 1353768847}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Input-Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -792,7 +790,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -25}
+  m_AnchoredPosition: {x: 300, y: -100}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1353768847
@@ -842,13 +840,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.6
+  m_fontSize: 48.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1025,6 +1023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   PlayerObject: {fileID: 0}
+  moveText: {fileID: 1353768847}
 --- !u!4 &2053982264
 Transform:
   m_ObjectHideFlags: 0
@@ -1052,6 +1051,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 6318321749252431117, guid: 9fa6d53907aa19a439541b7d71c108b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6445236029847431773, guid: 9fa6d53907aa19a439541b7d71c108b1,
         type: 3}
