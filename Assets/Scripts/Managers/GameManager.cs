@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
     public bool IsGameRunning() => State == GameState.GAME;
 
     [SerializeField]
-    private GameObject PlayerObject;
+    private GameObject playerObject;
+    public GameObject PlayerObject => playerObject;
 
     public TextMeshProUGUI moveText;
 
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     public void SetPlayer(GameObject gamePlayer)
     {
-        PlayerObject = gamePlayer;
+        playerObject = gamePlayer;
     }
 
 }

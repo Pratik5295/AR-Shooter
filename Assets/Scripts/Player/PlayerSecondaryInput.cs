@@ -11,6 +11,9 @@ public class PlayerSecondaryInput : MonoBehaviour
     [SerializeField]
     private Transform bulletSpawnPoint;
 
+    [SerializeField]
+    private float projectileSpeed;
+
     private void Start()
     {
         _input = GetComponent<StarterAssetsInputs>();
@@ -30,7 +33,15 @@ public class PlayerSecondaryInput : MonoBehaviour
             if (_input.shoot)
             {
                 //Instantiate the shooting projectile
-                Instantiate(bulletPrefab,bulletSpawnPoint.position, Quaternion.identity);
+                GameObject projectile = Instantiate(bulletPrefab,bulletSpawnPoint.position, Quaternion.identity);
+
+                Rigidbody rb = projectile.GetComponent<Rigidbody>();
+
+                if (rb != null)
+                {
+                    // Apply force to the projectile in the forward direction of the fire point
+                    rb.velocity = Vector3.forward * projectileSpeed;
+                }
 
                 _input.shoot = false;
             }

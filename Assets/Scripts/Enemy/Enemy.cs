@@ -1,43 +1,170 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-[DefaultExecutionOrder(2)]
 public class Enemy : MonoBehaviour
 {
-    public float speed;
-
-    private GameObject target;
-
-    private void Start()
+    // State enum for the FSM
+    public enum EnemyState
     {
-        SearchForTarget();
+        Idle,
+        MoveToTarget,
+        Attack,
+        Dead
     }
 
-    private void SearchForTarget()
+    [Header("Enemy Settings")]
+    public float moveSpeed = 2f;
+    public float attackRange = 1.5f;
+    public float attackCooldown = 2f;
+    public float damage = 10f;
+
+    [Header("Target")]
+    public Transform target; // The player or object to attack
+
+    private EnemyState currentState = EnemyState.Idle;
+    protected float attackTimer = 0f;
+    private Health health; // Reference to health component
+
+    [Header("Optional Components")]
+    public GameObject deathEffect; // Optional death effect (e.g., particles)
+
+    public Action OnEnemyDeathEvent;
+
+    void Start()
     {
-        if (target == null)
+        // Initialize health component
+        health = GetComponent<Health>();
+        if (health == null)
         {
-            target = GameObject.FindGameObjectWithTag("Player");
+            Debug.LogError("Health component not found on enemy.");
         }
     }
 
-    private void Update()
+    void Update()
     {
-        if(target == null) SearchForTarget();
+        // FSM logic
+        switch (currentState)
+        {
+            case EnemyState.Idle:
+                IdleBehavior();
+                break;
 
-        Movement();
+            case EnemyState.MoveToTarget:
+                MoveToTargetBehavior();
+                break;
+
+            case EnemyState.Attack:
+                AttackBehavior();
+                break;
+
+            case EnemyState.Dead:
+                DieBehavior();
+                break;
+        }
+
+        // Check if health is depleted
+        if (health != null && health.GetCurrentHealth() <= 0 && currentState != EnemyState.Dead)
+        {
+            ChangeState(EnemyState.Dead);
+        }
     }
 
-    private void Movement()
+    /// <summary>
+    /// Change the enemy's current state.
+    /// </summary>
+    /// <param name="newState">The new state to transition to.</param>
+    public void ChangeState(EnemyState newState)
+    {
+        currentState = newState;
+    }
+
+    #region State Behaviors
+
+    private void IdleBehavior()
+    {
+        // If a target exists, transition to MoveToTarget
+        if (target != null)
+        {
+            ChangeState(EnemyState.MoveToTarget);
+        }
+    }
+
+    private void MoveToTargetBehavior()
     {
         if (target == null) return;
 
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        // Move towards the target
+        Vector3 direction = (target.position - transform.position).normalized;
+        transform.position += direction * moveSpeed * Time.deltaTime;
 
-        if (Vector3.Distance(transform.position, target.transform.position) < 0.01f)
+        // Face the target
+        if (direction != Vector3.zero)
         {
-            Debug.Log("Reached the target!");
+            transform.forward = direction;
+        }
+
+        // Check if within attack range
+        if (Vector3.Distance(transform.position, target.position) <= attackRange)
+        {
+            ChangeState(EnemyState.Attack);
         }
     }
+
+    protected virtual void AttackBehavior()
+    {
+        // Stop moving
+        attackTimer += Time.deltaTime;
+
+        if (attackTimer >= attackCooldown)
+        {
+            // Perform attack (e.g., deal damage to the target's health component)
+            Health targetHealth = target.GetComponent<Health>();
+            if (targetHealth != null)
+            {
+                targetHealth.TakeDamage(damage);
+            }
+
+            Debug.Log($"{gameObject.name} attacked {target.name} for {damage} damage.");
+            attackTimer = 0f;
+        }
+
+        // Check if target moves out of attack range
+        if (Vector3.Distance(transform.position, target.position) > attackRange)
+        {
+            ChangeState(EnemyState.MoveToTarget);
+        }
+    }
+
+    private void DieBehavior()
+    {
+        // Handle death (e.g., play death animation, spawn effects)
+        Debug.Log($"{gameObject.name} has died.");
+
+        if (deathEffect != null)
+        {
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+        }
+
+        //Fire the enemy death event to notify others
+        OnEnemyDeathEvent?.Invoke();
+
+        // Destroy the enemy GameObject
+        Destroy(gameObject);
+    }
+
+    #endregion
+
+    #region Public Methods for Customization
+
+    /// <summary>
+    /// Set the target for the enemy to attack.
+    /// </summary>
+    /// <param name="newTarget">The target to set.</param>
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
+        ChangeState(EnemyState.MoveToTarget);
+    }
+
+    #endregion
 }
