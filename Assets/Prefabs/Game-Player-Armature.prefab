@@ -306,7 +306,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1531266638244021502, guid: 1b5a4ed0362c731408a32210bebdc80e,
     type: 3}
   bulletSpawnPoint: {fileID: 4813466629179216456}
-  projectileSpeed: 2
 --- !u!114 &6760498489762283943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1123,6 +1122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 174394969703770225}
   - component: {fileID: 4581726883859617913}
+  - component: {fileID: 8496231905817451388}
   m_Layer: 0
   m_Name: Game-Player-Armature
   m_TagString: Untagged
@@ -1160,6 +1160,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+--- !u!114 &8496231905817451388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3893176289557020924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 757117d37592b4c4695766f49ec3b2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  destroyOnDeath: 1
+  deathEffect: {fileID: 0}
 --- !u!1 &3922407838761985492
 GameObject:
   m_ObjectHideFlags: 0

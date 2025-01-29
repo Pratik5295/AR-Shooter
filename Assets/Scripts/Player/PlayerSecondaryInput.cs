@@ -6,13 +6,10 @@ public class PlayerSecondaryInput : MonoBehaviour
     private StarterAssetsInputs _input;
 
     [SerializeField]
-    private GameObject bulletPrefab;
+    private Projectile bulletPrefab;
 
     [SerializeField]
     private Transform bulletSpawnPoint;
-
-    [SerializeField]
-    private float projectileSpeed;
 
     private void Start()
     {
@@ -33,8 +30,8 @@ public class PlayerSecondaryInput : MonoBehaviour
             if (_input.shoot)
             {
                 //Instantiate the shooting projectile
-                GameObject projectile = Instantiate(bulletPrefab,bulletSpawnPoint.position, Quaternion.identity);
-
+                Projectile projectile = Instantiate(bulletPrefab,bulletSpawnPoint.position, Quaternion.identity);
+                projectile.SetDirection(transform.forward);
 
                 _input.shoot = false;
             }

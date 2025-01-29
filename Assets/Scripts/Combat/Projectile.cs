@@ -3,18 +3,23 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField]
-    private float projectileSpeed = 2f;
+    private float projectileSpeed;
 
     private Rigidbody rb;
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
 
+    public void SetDirection(Vector3 direction)
+    {
         if (rb != null)
         {
             // Apply force to the projectile in the forward direction of the fire point
-            rb.velocity = Vector3.forward * projectileSpeed;
+            rb.velocity = direction * projectileSpeed;
         }
     }
+
+    
 
 }
