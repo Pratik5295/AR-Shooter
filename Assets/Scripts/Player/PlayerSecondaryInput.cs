@@ -35,13 +35,6 @@ public class PlayerSecondaryInput : MonoBehaviour
                 //Instantiate the shooting projectile
                 GameObject projectile = Instantiate(bulletPrefab,bulletSpawnPoint.position, Quaternion.identity);
 
-                Rigidbody rb = projectile.GetComponent<Rigidbody>();
-
-                if (rb != null)
-                {
-                    // Apply force to the projectile in the forward direction of the fire point
-                    rb.velocity = Vector3.forward * projectileSpeed;
-                }
 
                 _input.shoot = false;
             }

@@ -20,6 +20,8 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.GetCurrentState() != GameState.GAME) return;
+
         if (currentEnemyCount < maxEnemies)
         {
             spawnTimer += Time.deltaTime;
@@ -65,28 +67,10 @@ public class EnemySpawner : MonoBehaviour
         // Generate a random position within the bounds of the spawn area
         Vector3 randomPosition = new Vector3(
             Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2),
-            Random.Range(-spawnAreaSize.y / 2, spawnAreaSize.y / 2),
+            0f,
             Random.Range(-spawnAreaSize.z / 2, spawnAreaSize.z / 2)
         );
 
         return transform.position + randomPosition;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Optional: Start spawning enemies when the player enters the trigger area
-            enabled = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Optional: Stop spawning enemies when the player leaves the trigger area
-            enabled = false;
-        }
     }
 }

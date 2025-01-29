@@ -82,10 +82,19 @@ public class Enemy : MonoBehaviour
 
     private void IdleBehavior()
     {
+        //Check if target exists, if not, do a check to search for the target
         // If a target exists, transition to MoveToTarget
         if (target != null)
         {
             ChangeState(EnemyState.MoveToTarget);
+        }
+        else
+        {
+            //Asking game manager for a target
+            if (GameManager.Instance != null)
+            {
+                target = GameManager.Instance.PlayerObject.transform;
+            }
         }
     }
 

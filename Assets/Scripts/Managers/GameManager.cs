@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
     public void SetPlayer(GameObject gamePlayer)
     {
         playerObject = gamePlayer;
+        SetState(GameState.GAME);
     }
 
 }
