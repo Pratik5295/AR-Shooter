@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 6760498489762283943}
   - component: {fileID: 4515954197423361456}
   - component: {fileID: 3650679564326317043}
+  - component: {fileID: 1643498750840671160}
   m_Layer: 8
   m_Name: PlayerArmature
   m_TagString: Player
@@ -444,6 +445,21 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1643498750840671160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539491608501766705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 300a8541c9d7d874f8281f0b36cd09f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  destroyOnDeath: 1
+  deathEffect: {fileID: 0}
 --- !u!1 &617253271369199474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,7 +1140,6 @@ GameObject:
   m_Component:
   - component: {fileID: 174394969703770225}
   - component: {fileID: 4581726883859617913}
-  - component: {fileID: 4113214004501427412}
   m_Layer: 0
   m_Name: Game-Player-Armature
   m_TagString: Player
@@ -1163,21 +1178,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   playerObject: {fileID: 539491608501766705}
---- !u!114 &4113214004501427412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3893176289557020924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 300a8541c9d7d874f8281f0b36cd09f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  destroyOnDeath: 1
-  deathEffect: {fileID: 0}
 --- !u!1 &3922407838761985492
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,6 +3098,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8471643715132799974, guid: 78d1b7a88f01e2644993b95460b23182,
+        type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 1643498750840671160}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

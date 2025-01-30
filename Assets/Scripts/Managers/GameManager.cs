@@ -134,5 +134,15 @@ public class GameManager : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Only for testing purposes in Unity
+    /// </summary>
+    [ContextMenu("Force Start Game")]
+    public void ForceStartGame()
+    {
+        SetState(GameState.GAME);
+    }
+
+
 }
 

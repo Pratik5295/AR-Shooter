@@ -4,7 +4,7 @@ public class PlayerHealth : Health
 {
     public override void Die()
     {
-        base.Die();
+        //Directly restart the scene instead of deleting player
 
         //Restart scene as player died
         Scene scene = SceneManager.GetActiveScene();
