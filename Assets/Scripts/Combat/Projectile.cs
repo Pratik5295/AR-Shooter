@@ -1,6 +1,5 @@
 using GGJ.Managers;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Projectile : MonoBehaviour
 {
