@@ -1,6 +1,10 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
+
+/// <summary>
+/// Functions as the UI Manager
+/// </summary>
 public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager Instance = null;
@@ -10,6 +14,10 @@ public class MainMenuManager : MonoBehaviour
     public GameScreen mainMenuScreen;
     public GameScreen pauseScreen;
     public GameScreen characterSelectScreen;
+
+
+    [SerializeField]
+    private TextMeshProUGUI statusText;
 
     private GameScreen activeScreen;
     private bool isPaused = false;
@@ -95,5 +103,11 @@ public class MainMenuManager : MonoBehaviour
         {
             activeScreen.Show();
         }
+    }
+
+
+    public void SetStatusText(string text)
+    {
+        statusText.text = text;
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -11,11 +12,19 @@ public class EnemySpawner : MonoBehaviour
     private int currentEnemyCount = 0; // Track the number of spawned enemies
     private float spawnTimer = 0f;     // Timer for spawn intervals
 
+    [SerializeField]
+    private List<Enemy> enemyRooster;
+
     void OnDrawGizmosSelected()
     {
         // Draw the spawn area in the editor
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position, spawnAreaSize);
+    }
+
+    private void Start()
+    {
+        enemyRooster = new List<Enemy>();
     }
 
     void Update()
@@ -38,6 +47,9 @@ public class EnemySpawner : MonoBehaviour
     {
         // Generate a random position within the spawn area
         Vector3 randomPosition = GetRandomPositionInArea();
+
+        //Get Random enemy to spawn
+        enemyPrefab = GetRandomEnemy();
 
         // Spawn the enemy
         Enemy enemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
@@ -72,5 +84,22 @@ public class EnemySpawner : MonoBehaviour
         );
 
         return transform.position + randomPosition;
+    }
+
+    public void SetRooster(List<Enemy> enemies)
+    {
+        enemyRooster = enemies;
+    }
+
+    private Enemy GetRandomEnemy()
+    {
+        if (enemyRooster == null || enemyRooster.Count == 0)
+        {
+            Debug.LogWarning("Enemy roster is empty!");
+            return null;
+        }
+
+        int randomIndex = Random.Range(0, enemyRooster.Count);
+        return enemyRooster[randomIndex];
     }
 }

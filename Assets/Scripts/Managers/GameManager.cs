@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     private GameObject playerObject;
     public GameObject PlayerObject => playerObject;
 
-    public TextMeshProUGUI moveText;
 
     public Action<GameState> OnStateChanged;
 
@@ -133,6 +132,7 @@ public class GameManager : MonoBehaviour
                 return PlayerPrefabs[0];
         }
     }
+
 
 }
 

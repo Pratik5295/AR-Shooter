@@ -48,7 +48,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   playerObject: {fileID: 0}
-  moveText: {fileID: 0}
   ARManager: {fileID: 0}
   ObjectSpawner: {fileID: 0}
   CharacterSelect: 0
@@ -67,7 +66,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76116c8057add0e4aa9c0fe9da502bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: {fileID: 11400000, guid: 2ffdd68996d427c43b0cfcb310ed41b3, type: 2}
+  levels:
+  - {fileID: 11400000, guid: 2ffdd68996d427c43b0cfcb310ed41b3, type: 2}
+  - {fileID: 11400000, guid: 22b91f95580698c4595da9bb732126da, type: 2}
+  - {fileID: 11400000, guid: dd22315d2e450684d9c8a1b0597f6620, type: 2}
   enemySpawner: {fileID: 7967513410178996806}
 --- !u!1001 &998789530526127519
 PrefabInstance:

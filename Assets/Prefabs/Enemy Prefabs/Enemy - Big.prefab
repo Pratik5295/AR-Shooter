@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 7099902635227798534}
   - component: {fileID: 4212408025954926719}
   m_Layer: 0
-  m_Name: Enemy-Cube
+  m_Name: Enemy - Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,7 +137,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -5}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7124447643985437921}
@@ -227,10 +227,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c818005125f77469c2b01d77ee6e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.05
-  attackRange: 0.5
-  attackCooldown: 2
-  damage: 5
+  moveSpeed: 0.0025
+  attackRange: 1
+  attackCooldown: 3
+  damage: 10
   target: {fileID: 0}
   deathEffect: {fileID: 0}
 --- !u!114 &7099902635227798534
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d60bae9878c05469f9078475635166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 20
   destroyOnDeath: 1
   deathEffect: {fileID: 0}
 --- !u!54 &4212408025954926719

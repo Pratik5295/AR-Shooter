@@ -1,22 +1,28 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance = null;
 
     [Header("Level Configuration")]
-    public LevelData currentLevel; // Assign the level data asset in the inspector
+    public List<LevelData> levels; // List of level data assets
     public EnemySpawner enemySpawner; // Assign the EnemySpawner in the inspector
+
+    private int currentLevelIndex = 0;
+    private LevelData currentLevel;
 
     private int enemiesSpawned = 0;
     private int enemiesDefeated = 0;
+    private bool levelInProgress = false;
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -24,19 +30,32 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         if (GameManager.Instance.GetCurrentState() != GameState.GAME) return;
 
-        if (currentLevel != null)
+        StartLevel(0); // Start from the first level
+    }
+
+    public void StartLevel(int levelIndex)
+    {
+        if (levelIndex < 0 || levelIndex >= levels.Count)
         {
-            Debug.Log($"Starting Level: {currentLevel.levelName}");
-            StartCoroutine(SpawnEnemies());
+            SetStatusText("Invalid level index!");
+            return;
         }
-        else
-        {
-            Debug.LogError("No LevelData assigned to LevelManager!");
-        }
+
+        currentLevelIndex = levelIndex;
+        currentLevel = levels[currentLevelIndex];
+        enemiesSpawned = 0;
+        enemiesDefeated = 0;
+        levelInProgress = true;
+
+        //Update the spawner
+        enemySpawner.SetRooster(currentLevel.enemyPrefabs);
+
+        SetStatusText($"Starting Level: {currentLevel.levelName}");
+        StartCoroutine(SpawnEnemies());
     }
 
     private IEnumerator SpawnEnemies()
@@ -56,8 +75,32 @@ public class LevelManager : MonoBehaviour
 
         if (enemiesDefeated >= currentLevel.enemyCount)
         {
-            Debug.Log("Level Complete!");
-            // Trigger level completion events, load next level, etc.
+            SetStatusText("Level Complete!");
+            levelInProgress = false;
+            PlayNextLevel();
         }
+    }
+
+    public void PlayNextLevel()
+    {
+        if (currentLevelIndex + 1 < levels.Count)
+        {
+            StartLevel(currentLevelIndex + 1);
+        }
+        else
+        {
+            SetStatusText("All levels completed! Game Over or Restart.");
+        }
+    }
+
+    public void RestartLevel()
+    {
+        Debug.Log($"Restarting Level: {currentLevel.levelName}");
+        StartLevel(currentLevelIndex);
+    }
+
+    private void SetStatusText(string message)
+    {
+        MainMenuManager.Instance.SetStatusText(message);
     }
 }
