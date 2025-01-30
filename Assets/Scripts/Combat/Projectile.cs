@@ -1,3 +1,4 @@
+using GGJ.Managers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -17,8 +18,10 @@ public class Projectile : MonoBehaviour
 
     public Vector3 moveDirection = Vector3.zero;
 
-    public void LaunchProjectile(Vector3 direction)
+    public void LaunchProjectile(Vector3 direction, float characterDamage = 0f)
     {
+        projectileDamage += characterDamage;
+
         rb.velocity = direction.normalized * projectileSpeed;
         //moveDirection = direction;
 
@@ -38,6 +41,8 @@ public class Projectile : MonoBehaviour
         if(other.gameObject.TryGetComponent<Health>(out var entity))
         {
             entity.TakeDamage(projectileDamage);
+
+            AudioManager.Instance.PlayForegroundSound(1);
         }
 
         Destroy(gameObject);
