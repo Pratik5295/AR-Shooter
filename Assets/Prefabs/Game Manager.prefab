@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6198374609000894598}
   - component: {fileID: 1965798347519638432}
-  - component: {fileID: 352908333923785293}
+  - component: {fileID: 3258521328132627853}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -49,7 +49,8 @@ MonoBehaviour:
   State: 0
   playerObject: {fileID: 0}
   moveText: {fileID: 0}
---- !u!114 &352908333923785293
+  CharacterSelect: 0
+--- !u!114 &3258521328132627853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,8 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76116c8057add0e4aa9c0fe9da502bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: {fileID: 0}
-  enemySpawner: {fileID: 0}
+  currentLevel: {fileID: 11400000, guid: 2ffdd68996d427c43b0cfcb310ed41b3, type: 2}
+  enemySpawner: {fileID: 7967513410178996806}
 --- !u!1001 &998789530526127519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,6 +132,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf512542e7186ff4bbfe1f68f137b237, type: 3}
+--- !u!114 &7967513410178996806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7155695284348178393, guid: bf512542e7186ff4bbfe1f68f137b237,
+    type: 3}
+  m_PrefabInstance: {fileID: 998789530526127519}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66572c991661d0544b958093e98058c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9174142822951872228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8254380699404825467, guid: bf512542e7186ff4bbfe1f68f137b237,

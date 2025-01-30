@@ -7,6 +7,10 @@ public class GamePlayer : MonoBehaviour
 {
     [SerializeField]
     private GameManager gameManager;
+
+    [SerializeField]
+    private GameObject playerObject;
+
     private void Start()
     {
         //Find Game manager and notify the reference
@@ -14,7 +18,7 @@ public class GamePlayer : MonoBehaviour
 
         if(gameManager != null )
         {
-            gameManager.SetPlayer(gameObject);
+            gameManager.SetPlayer(playerObject);
         }
     }
 }

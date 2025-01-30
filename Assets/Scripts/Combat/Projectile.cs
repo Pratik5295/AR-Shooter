@@ -33,15 +33,15 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log($"Hit: {other.gameObject}");
+
+        if(other.gameObject.TryGetComponent<Health>(out var entity))
+        {
+            entity.TakeDamage(projectileDamage);
+        }
+
         Destroy(gameObject);
     }
-
-    void Update()
-    {
-        // Move the projectile in the stored direction
-        //transform.position += moveDirection * projectileSpeed * Time.deltaTime;
-    }
-
 
 
 }

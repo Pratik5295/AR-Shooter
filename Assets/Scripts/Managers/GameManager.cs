@@ -46,6 +46,10 @@ public class GameManager : MonoBehaviour
             Instance = this;
             State = GameState.DEFAULT;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()

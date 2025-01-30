@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == this)
+        if(Instance == null)
         {
             Instance = this;
         }
@@ -26,6 +26,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        if (GameManager.Instance.GetCurrentState() != GameState.GAME) return;
+
         if (currentLevel != null)
         {
             Debug.Log($"Starting Level: {currentLevel.levelName}");

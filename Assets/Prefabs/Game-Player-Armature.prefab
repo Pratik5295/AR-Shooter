@@ -1161,6 +1161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  playerObject: {fileID: 539491608501766705}
 --- !u!114 &8496231905817451388
 MonoBehaviour:
   m_ObjectHideFlags: 0
