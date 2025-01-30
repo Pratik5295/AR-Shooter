@@ -135,12 +135,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawner
       objectReference: {fileID: 0}
-    - target: {fileID: 7155695284348178393, guid: bf512542e7186ff4bbfe1f68f137b237,
-        type: 3}
-      propertyPath: enemyPrefab
-      value: 
-      objectReference: {fileID: 4356563000818042423, guid: 9fa6d53907aa19a439541b7d71c108b1,
-        type: 3}
     - target: {fileID: 8254380699404825467, guid: bf512542e7186ff4bbfe1f68f137b237,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -314,7 +308,7 @@ PrefabInstance:
         type: 3}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 6215873206604232781, guid: 6e557de1969bf8044918c5793d9f227c,
+      objectReference: {fileID: 6215873206604232781, guid: 1b5a4ed0362c731408a32210bebdc80e,
         type: 3}
     - target: {fileID: 174394969703770225, guid: ee9e98ba45c41ae468005849909160c0,
         type: 3}

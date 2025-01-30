@@ -31,7 +31,7 @@ public class PlayerSecondaryInput : MonoBehaviour
             {
                 //Instantiate the shooting projectile
                 Projectile projectile = Instantiate(bulletPrefab,bulletSpawnPoint.position, Quaternion.identity);
-                projectile.SetDirection(transform.forward);
+                projectile.LaunchProjectile(transform.forward);
 
                 _input.shoot = false;
             }

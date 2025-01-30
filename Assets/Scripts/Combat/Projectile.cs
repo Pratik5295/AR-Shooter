@@ -1,25 +1,47 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Projectile : MonoBehaviour
 {
     [SerializeField]
     private float projectileSpeed;
 
+    [SerializeField]
+    private float projectileDamage;   //Damage associated with each projectile
+
+    [SerializeField]
     private Rigidbody rb;
-    private void Start()
+
+    [SerializeField]
+    private float destroyAfter;
+
+    public Vector3 moveDirection = Vector3.zero;
+
+    public void LaunchProjectile(Vector3 direction)
     {
-        rb = GetComponent<Rigidbody>();
+        rb.velocity = direction.normalized * projectileSpeed;
+        //moveDirection = direction;
+
+
+        DisableProjectile();
     }
 
-    public void SetDirection(Vector3 direction)
+    private void DisableProjectile()
     {
-        if (rb != null)
-        {
-            // Apply force to the projectile in the forward direction of the fire point
-            rb.velocity = direction * projectileSpeed;
-        }
+        Destroy(gameObject,destroyAfter);
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+    }
+
+    void Update()
+    {
+        // Move the projectile in the stored direction
+        //transform.position += moveDirection * projectileSpeed * Time.deltaTime;
+    }
+
+
 
 }

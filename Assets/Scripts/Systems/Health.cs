@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -8,7 +9,9 @@ public class Health : MonoBehaviour
 
     public float GetCurrentHealth() => currentHealth;
 
-    [Header("Optional Components")]
+    public Action<float> OnHealthChange;
+
+    [Header("Death Effect Components")]
     public bool destroyOnDeath = true; // Should the object be destroyed on death?
     public GameObject deathEffect;    // Effect to instantiate on death (e.g., explosion, particle effect)
 
@@ -27,6 +30,8 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Ensure health stays within bounds
         Debug.Log($"{gameObject.name} took {damage} damage. Current Health: {currentHealth}");
+
+        OnHealthChange?.Invoke(currentHealth);
 
         // Check if dead
         if (currentHealth <= 0)
@@ -47,7 +52,7 @@ public class Health : MonoBehaviour
     /// <summary>
     /// Handles death logic.
     /// </summary>
-    private void Die()
+    public virtual void Die()
     {
         Debug.Log($"{gameObject.name} has died.");
 
@@ -57,7 +62,6 @@ public class Health : MonoBehaviour
             Instantiate(deathEffect, transform.position, Quaternion.identity);
         }
 
-        // Optional: Destroy object on death
         if (destroyOnDeath)
         {
             Destroy(gameObject);

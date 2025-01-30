@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
     public Enemy enemyPrefab; 
     public int maxEnemies = 5;     // Maximum number of enemies to spawn at a time
     public float spawnInterval = 3f; // Time interval between spawns
-    public Vector3 spawnAreaSize = new Vector3(10f, 0f, 10f); // Area within which enemies spawn
+    public Vector3 spawnAreaSize = new Vector3(3f, 0f, 3f); // Area within which enemies spawn
 
     private int currentEnemyCount = 0; // Track the number of spawned enemies
     private float spawnTimer = 0f;     // Timer for spawn intervals
@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy()
+    public void SpawnEnemy()
     {
         // Generate a random position within the spawn area
         Vector3 randomPosition = GetRandomPositionInArea();
@@ -67,7 +67,7 @@ public class EnemySpawner : MonoBehaviour
         // Generate a random position within the bounds of the spawn area
         Vector3 randomPosition = new Vector3(
             Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2),
-            0f,
+            GameManager.Instance.PlayerObject.transform.position.y,
             Random.Range(-spawnAreaSize.z / 2, spawnAreaSize.z / 2)
         );
 

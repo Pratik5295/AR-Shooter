@@ -2,12 +2,19 @@ using System;
 using TMPro;
 using UnityEngine;
 
-    public enum GameState
-    {
-        DEFAULT = 0,
-        GAME = 1,
-        PAUSED = 2
-    }
+public enum GameState
+{ 
+   DEFAULT = 0,
+   GAME = 1,
+   PAUSED = 2
+}
+
+public enum CharacterSelect
+{
+    DEFAULT = 0,
+    ONE = 1
+}
+
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +33,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI moveText;
 
     public Action<GameState> OnStateChanged;
+
+
+    [Header("Character Selection")]
+    [SerializeField]
+    private CharacterSelect CharacterSelect = CharacterSelect.DEFAULT;
 
     private void Awake()
     {
@@ -61,6 +73,11 @@ public class GameManager : MonoBehaviour
     {
         playerObject = gamePlayer;
         SetState(GameState.GAME);
+    }
+
+    public void SelectCharacter(CharacterSelect characterSelect)
+    {
+        CharacterSelect = characterSelect;
     }
 
 }
