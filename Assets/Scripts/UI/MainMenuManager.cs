@@ -37,7 +37,8 @@ public class MainMenuManager : MonoBehaviour
     {
         Debug.Log("Starting Game...");
         SetActiveScreen(null); // Hide all menus
-        SceneManager.LoadScene("GameScene");
+
+        GameManager.Instance.StartGame();
     }
 
     public void PauseGame()

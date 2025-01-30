@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public enum GameState
 { 
@@ -35,9 +37,19 @@ public class GameManager : MonoBehaviour
     public Action<GameState> OnStateChanged;
 
 
+    [Header("Reference to AR components")]
+    [SerializeField]
+    private GameObject ARManager;
+
+    [SerializeField]
+    private ObjectSpawner ObjectSpawner;
+
+
     [Header("Character Selection")]
     [SerializeField]
     private CharacterSelect CharacterSelect = CharacterSelect.DEFAULT;
+
+    public List<GameObject> PlayerPrefabs = new List<GameObject>();
 
     private void Awake()
     {
@@ -73,15 +85,53 @@ public class GameManager : MonoBehaviour
         SetState(GameState.GAME);
     }
 
+    public void StartGame()
+    {
+        SetState(GameState.GAME);
+
+        //Update the AR related game objects about scene start
+        UpdateARManager();
+    }
+
     public void SetPlayer(GameObject gamePlayer)
     {
         playerObject = gamePlayer;
         SetState(GameState.GAME);
+
+        
     }
 
     public void SelectCharacter(CharacterSelect characterSelect)
     {
         CharacterSelect = characterSelect;
+    }
+
+    public void UpdateARManager()
+    {
+        ARManager.SetActive(true);
+
+        //Set the updated character
+        List<GameObject> objectsToSpawn = new List<GameObject>
+        {
+            GetSpawnPlayerObject()
+        };
+
+
+
+
+        ObjectSpawner.objectPrefabs = objectsToSpawn;
+    }
+
+    private GameObject GetSpawnPlayerObject()
+    {
+        switch (CharacterSelect)
+        {
+            case CharacterSelect.ONE:
+                return PlayerPrefabs[1];
+            case CharacterSelect.DEFAULT:
+            default:
+                return PlayerPrefabs[0];
+        }
     }
 
 }

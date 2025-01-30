@@ -49,7 +49,12 @@ MonoBehaviour:
   State: 0
   playerObject: {fileID: 0}
   moveText: {fileID: 0}
+  ARManager: {fileID: 0}
+  ObjectSpawner: {fileID: 0}
   CharacterSelect: 0
+  PlayerPrefabs:
+  - {fileID: 3893176289557020924, guid: ee9e98ba45c41ae468005849909160c0, type: 3}
+  - {fileID: 3893176289557020924, guid: 8ca685f8e16869746a87925dc0d1b31e, type: 3}
 --- !u!114 &3258521328132627853
 MonoBehaviour:
   m_ObjectHideFlags: 0
