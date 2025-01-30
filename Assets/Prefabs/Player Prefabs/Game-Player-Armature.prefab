@@ -307,6 +307,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6215873206604232781, guid: 1b5a4ed0362c731408a32210bebdc80e,
     type: 3}
   bulletSpawnPoint: {fileID: 4813466629179216456}
+  characterDamage: 0
 --- !u!114 &6760498489762283943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1123,7 +1124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 174394969703770225}
   - component: {fileID: 4581726883859617913}
-  - component: {fileID: 8496231905817451388}
+  - component: {fileID: 4113214004501427412}
   m_Layer: 0
   m_Name: Game-Player-Armature
   m_TagString: Player
@@ -1162,7 +1163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   playerObject: {fileID: 539491608501766705}
---- !u!114 &8496231905817451388
+--- !u!114 &4113214004501427412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1171,7 +1172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3893176289557020924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 757117d37592b4c4695766f49ec3b2a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 300a8541c9d7d874f8281f0b36cd09f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
@@ -3097,11 +3098,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8471643715132799974, guid: 78d1b7a88f01e2644993b95460b23182,
-        type: 3}
-      propertyPath: health
-      value: 
-      objectReference: {fileID: 8496231905817451388}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

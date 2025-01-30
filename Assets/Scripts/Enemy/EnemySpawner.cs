@@ -31,16 +31,16 @@ public class EnemySpawner : MonoBehaviour
     {
         if (GameManager.Instance.GetCurrentState() != GameState.GAME) return;
 
-        if (currentEnemyCount < maxEnemies)
-        {
-            spawnTimer += Time.deltaTime;
+        //if (currentEnemyCount < maxEnemies)
+        //{
+        //    spawnTimer += Time.deltaTime;
 
-            if (spawnTimer >= spawnInterval)
-            {
-                SpawnEnemy();
-                spawnTimer = 0f;
-            }
-        }
+        //    if (spawnTimer >= spawnInterval)
+        //    {
+        //        SpawnEnemy();
+        //        spawnTimer = 0f;
+        //    }
+        //}
     }
 
     public void SpawnEnemy()

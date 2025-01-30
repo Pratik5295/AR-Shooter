@@ -9,5 +9,5 @@ public class LevelData : ScriptableObject
     public float spawnInterval;
 
     //Enemy list
-    public List<Enemy> enemyPrefabs;
+    public List<Enemy> enemyPrefabs = new List<Enemy>();
 }

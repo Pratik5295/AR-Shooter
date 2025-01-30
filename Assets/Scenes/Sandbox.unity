@@ -641,6 +641,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1339387803154348938, guid: ae73ba63ab53d754bb7e9529faf5e8a9,
+        type: 3}
+      propertyPath: m_text
+      value: Status text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339387803154348938, guid: ae73ba63ab53d754bb7e9529faf5e8a9,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 4859582859774108531, guid: ae73ba63ab53d754bb7e9529faf5e8a9,
         type: 3}
       propertyPath: m_Pivot.x

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+[DefaultExecutionOrder(3)]
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance = null;
@@ -32,9 +33,13 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance.GetCurrentState() != GameState.GAME) return;
+        GameManager.Instance.OnStateChanged += OnGameStateChangedHandler;
 
-        StartLevel(0); // Start from the first level
+        MainMenuManager.Instance.SetStatusText("Ready to start game");
+    }
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnStateChanged -= OnGameStateChangedHandler;
     }
 
     public void StartLevel(int levelIndex)
@@ -102,5 +107,13 @@ public class LevelManager : MonoBehaviour
     private void SetStatusText(string message)
     {
         MainMenuManager.Instance.SetStatusText(message);
+    }
+
+    public void OnGameStateChangedHandler(GameState newState)
+    {
+        if(newState == GameState.GAME)
+        {
+            StartLevel(0); // Start from the first level
+        }
     }
 }
