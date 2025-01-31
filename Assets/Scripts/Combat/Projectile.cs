@@ -1,4 +1,4 @@
-using GGJ.Managers;
+using ARGame.Managers;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour

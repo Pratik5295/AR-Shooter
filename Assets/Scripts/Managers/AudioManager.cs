@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GGJ.Managers
+namespace ARGame.Managers
 {
     public class AudioManager : MonoBehaviour
     {

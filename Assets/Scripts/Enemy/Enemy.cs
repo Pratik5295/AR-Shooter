@@ -1,3 +1,4 @@
+using ARGame.Managers;
 using System;
 using UnityEngine;
 
@@ -152,6 +153,8 @@ public class Enemy : MonoBehaviour
             {
                 animator.PlayAnimation(EnemyAnimState.ATTACK);
             }
+
+            AudioManager.Instance.PlayForegroundSound(3);
 
             // Perform attack (e.g., deal damage to the target's health component)
             Health targetHealth = target.GetComponent<Health>();

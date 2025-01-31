@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3a47c2d2a10fd134c9eed8db42a4a639, type: 3}
   - {fileID: 8300000, guid: 628276691e429824c91d79c4fcf0e381, type: 3}
   - {fileID: 8300000, guid: 72f526a6a9890f643a88e85a61c86c8a, type: 3}
+  - {fileID: 8300000, guid: 6ec6ebf19b4e4bf47bc380ae73ebbe3c, type: 3}
   backgroundVolume: 0.5
   foregroundVolume: 0.8
 --- !u!1 &886998202774873347
