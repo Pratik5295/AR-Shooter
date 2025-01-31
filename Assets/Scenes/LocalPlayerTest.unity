@@ -1198,6 +1198,18 @@ PrefabInstance:
       propertyPath: moveText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3258521328132627853, guid: f2906044e97f48c4c8cfd1a01a30a3e7,
+        type: 3}
+      propertyPath: levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 22b91f95580698c4595da9bb732126da,
+        type: 2}
+    - target: {fileID: 3258521328132627853, guid: f2906044e97f48c4c8cfd1a01a30a3e7,
+        type: 3}
+      propertyPath: levels.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ffdd68996d427c43b0cfcb310ed41b3,
+        type: 2}
     - target: {fileID: 6198374609000894598, guid: f2906044e97f48c4c8cfd1a01a30a3e7,
         type: 3}
       propertyPath: m_LocalPosition.x
