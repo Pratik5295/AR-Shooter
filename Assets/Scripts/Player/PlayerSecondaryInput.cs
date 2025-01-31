@@ -41,7 +41,10 @@ public class PlayerSecondaryInput : MonoBehaviour
                 _input.shoot = false;
 
                 //Audio effect
-                AudioManager.Instance.PlayForegroundSound(0);
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayForegroundSound(0);
+                }
             }
         }
     }
