@@ -26,7 +26,9 @@ public class Enemy : MonoBehaviour
     private Health health; // Reference to health component
 
     [Header("Optional Components")]
-    public GameObject deathEffect; // Optional death effect (e.g., particles)
+    public GameObject deathEffect;
+    [SerializeField]
+    private EnemyAnimation animator;
 
     public Action OnEnemyDeathEvent;
 
@@ -82,6 +84,11 @@ public class Enemy : MonoBehaviour
 
     private void IdleBehavior()
     {
+        if (animator != null)
+        {
+            animator.PlayAnimation(EnemyAnimState.IDLE);
+        }
+
         //Check if target exists, if not, do a check to search for the target
         // If a target exists, transition to MoveToTarget
         if (target != null)
@@ -100,7 +107,21 @@ public class Enemy : MonoBehaviour
 
     private void MoveToTargetBehavior()
     {
-        if (target == null) return;
+
+        if (target == null)
+        {
+            if (animator != null)
+            {
+                animator.PlayAnimation(EnemyAnimState.IDLE);
+            }
+
+            return;
+        }
+
+        if (animator != null)
+        {
+            animator.PlayAnimation(EnemyAnimState.RUN);
+        }
 
         // Move towards the target
         Vector3 direction = (target.position - transform.position).normalized;
@@ -124,8 +145,14 @@ public class Enemy : MonoBehaviour
         // Stop moving
         attackTimer += Time.deltaTime;
 
+
         if (attackTimer >= attackCooldown)
         {
+            if (animator != null)
+            {
+                animator.PlayAnimation(EnemyAnimState.ATTACK);
+            }
+
             // Perform attack (e.g., deal damage to the target's health component)
             Health targetHealth = target.GetComponent<Health>();
             if (targetHealth != null)

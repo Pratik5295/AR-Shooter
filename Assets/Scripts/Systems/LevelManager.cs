@@ -59,7 +59,7 @@ public class LevelManager : MonoBehaviour
         //Update the spawner
         enemySpawner.SetRooster(currentLevel.enemyPrefabs);
 
-        SetStatusText($"Starting Level: {currentLevel.levelName}");
+        SetStatusText($"Current Level: {currentLevel.levelName}, Enemies Left: {currentLevel.enemyCount}/{currentLevel.enemyCount}");
         StartCoroutine(SpawnEnemies());
     }
 
@@ -77,6 +77,8 @@ public class LevelManager : MonoBehaviour
     public void EnemyDefeated()
     {
         enemiesDefeated++;
+
+        SetStatusText($"Current Level: {currentLevel.levelName}, Enemies Left: {enemiesDefeated}/{currentLevel.enemyCount}");
 
         if (enemiesDefeated >= currentLevel.enemyCount)
         {
