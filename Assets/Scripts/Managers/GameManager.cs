@@ -8,7 +8,8 @@ public enum GameState
 { 
    DEFAULT = 0,
    GAME = 1,
-   PAUSED = 2
+   PAUSED = 2,
+   GAMEOVER = 3
 }
 
 public enum CharacterSelect
@@ -90,6 +91,11 @@ public class GameManager : MonoBehaviour
 
         //Update the AR related game objects about scene start
         UpdateARManager();
+    }
+
+    public void GameOver()
+    {
+        SetState(GameState.GAMEOVER);
     }
 
     public void SetPlayer(GameObject gamePlayer)

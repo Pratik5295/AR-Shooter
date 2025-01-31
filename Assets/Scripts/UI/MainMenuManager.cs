@@ -14,6 +14,7 @@ public class MainMenuManager : MonoBehaviour
     public GameScreen mainMenuScreen;
     public GameScreen pauseScreen;
     public GameScreen characterSelectScreen;
+    public GameScreen gameOverScreen;
 
 
     [SerializeField]
@@ -69,6 +70,14 @@ public class MainMenuManager : MonoBehaviour
             Time.timeScale = 1f;
             Debug.Log("Game Resumed");
         }
+    }
+
+    public void GameOver()
+    {
+        isPaused = true;
+        SetActiveScreen(gameOverScreen);
+
+        GameManager.Instance.GameOver();
     }
 
     public void OpenCharacterSelect()

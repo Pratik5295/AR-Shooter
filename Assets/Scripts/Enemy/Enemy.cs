@@ -143,6 +143,8 @@ public class Enemy : MonoBehaviour
 
     protected virtual void AttackBehavior()
     {
+        if (target == null) return;
+
         // Stop moving
         attackTimer += Time.deltaTime;
 
@@ -154,7 +156,10 @@ public class Enemy : MonoBehaviour
                 animator.PlayAnimation(EnemyAnimState.ATTACK);
             }
 
-            AudioManager.Instance.PlayForegroundSound(3);
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayForegroundSound(3);
+            }
 
             // Perform attack (e.g., deal damage to the target's health component)
             Health targetHealth = target.GetComponent<Health>();

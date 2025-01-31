@@ -7,7 +7,11 @@ public class PlayerHealth : Health
         //Directly restart the scene instead of deleting player
 
         //Restart scene as player died
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.buildIndex);
+        //Scene scene = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(scene.buildIndex);
+
+        MainMenuManager.Instance.GameOver();
+
+        Destroy(gameObject);
     }
 }
